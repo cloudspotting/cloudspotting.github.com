@@ -118,7 +118,7 @@ window.require.register("cloudspotting", function(exports, require, module) {
         key: '8c78586d699eb1ee78db85b146053996eccf1eff'
       };
       var FILETYPE = 'png';
-      // var firebase = new Firebase('https://zm88wl4ubid.firebaseio-demo.com/');
+      var firebase = new Firebase('https://zm88wl4ubid.firebaseio-demo.com/');
 
 
       $(function(){
