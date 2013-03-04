@@ -111,7 +111,6 @@ window.require.register("cloudspotting", function(exports, require, module) {
 
   cloudspotting = {
 
-    var firebase = new Firebase('https://zm88wl4ubid.firebaseio-demo.com/');
 
     initialize: function(){
       var IMGUR = {
@@ -119,6 +118,8 @@ window.require.register("cloudspotting", function(exports, require, module) {
         key: '8c78586d699eb1ee78db85b146053996eccf1eff'
       };
       var FILETYPE = 'png';
+      var firebase = new Firebase('https://zm88wl4ubid.firebaseio-demo.com/');
+
 
       $(function(){
         var COLORS = [ '#EA1F8D', '#F5E535', '#74C6A3', '#4994D0', '#75CDDC', '#9F8CC2', '#D66BA9', '#ED2248', '#000' ];
