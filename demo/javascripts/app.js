@@ -117,7 +117,7 @@ window.require.register("cloudspotting", function(exports, require, module) {
         clientID: '78efd24716370d8',
         key: '8c78586d699eb1ee78db85b146053996eccf1eff'
       };
-      var FILETYPE = 'png';
+      var FILETYPE = 'jpg';
       var firebase = new Firebase('https://cloudspotting.firebaseio.com/');
 
 
@@ -155,7 +155,7 @@ window.require.register("cloudspotting", function(exports, require, module) {
           // console.log(sketch.background.ctx.canvas.width,sketch.background.ctx.canvas.height);
           sketch.exporter.canvas.width = sketch.canvas.width;
           sketch.exporter.canvas.height = sketch.canvas.height;
-          sketch.thickness = 4;
+          sketch.thickness = 2;
           sketch.snapshots = [];
 
           console.log(IMAGESPATH+DEMOIMG);
@@ -172,7 +172,7 @@ window.require.register("cloudspotting", function(exports, require, module) {
 
         sketch.update = function(){
 
-          radius = sketch.thickness + Math.abs( Math.sin( sketch.millis * 0.002 ) * 0 );
+          radius = sketch.thickness + Math.abs( Math.sin( sketch.millis * 0.002 ) * 2 );
           // radius = 2;
         };
 
@@ -197,9 +197,6 @@ window.require.register("cloudspotting", function(exports, require, module) {
         };
           // Event handlers
 
-        sketch.keydown = function(){
-          if ( sketch.keys.C ) sketch.clear();
-        };
 
         sketch.touchmove = function( e ) {
           if(sketch.drawing){
@@ -326,9 +323,6 @@ window.require.register("cloudspotting", function(exports, require, module) {
         sketch.draw = function(){
         };
 
-        sketch.clear = function(){
-          sketch.canvas.getContext('2d').clearRect(0,0,sketch.canvas.width, sketch.canvas.height);
-        }
         // sketch.click = function(){
         //   $('#status').text('click');
         // };
@@ -392,7 +386,7 @@ window.require.register("cloudspotting", function(exports, require, module) {
 
         $('#shuffle').click(function(event){
           sketch.setBackground(IMAGESPATH+CLOUDS[Math.floor(Math.random()*CLOUDS.length)]);
-          sketch.clear();
+          // sketch.clear();
         });
 
         imgur = function(canvas, name, caption) {
@@ -429,9 +423,9 @@ window.require.register("cloudspotting", function(exports, require, module) {
               // alert('Image uploaded successfully!\n' + response.data.link);
               var link = document.createElement('a');
               link.target = '_blank';
-              link.href = 'http://twitter.com/share?&via=Cloudspotting_&text=I just found something on a cloud :) ' + encodeURIComponent(response.data.link) + ' - ';
+              link.href = 'http://twitter.com/share?&via=Cloudspotting_&text=I just found something on a cloud :) ' + encodeURIComponent(response.data.link) + ' - evaporating at @StartupBusMX';
               link.click();
-              sketch.clear();
+              // sketch.clear();
               $('#name').val('');
               console.log(response);
             }).error(function() {
