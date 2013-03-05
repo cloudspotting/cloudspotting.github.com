@@ -204,6 +204,10 @@ ul {
   right: 2%;
 }
 
-#social {
+#powered{
+  background-color: #222;
+}
 
+.logo {
+  width: 100px;
 }
