@@ -17,12 +17,25 @@
       <script src="js/socialite.googleplus.js"></script>
       <script src="js/socialite.hackernews.js"></script>
       <script src="js/socialite.twitter.js"></script>
-      <script type="text">
+      <script >
         Socialite.load();
+        $(function(){
+          $('#ribbon').click(function(e){
+            $('html,body').animate({
+              scrollTop: $('#bus').offset().top
+            }, 2000, function() {
+            });
+          });
+          Socialite.load(document.getElementById('social'));
+        });
+        
+
+
       </script>
   </head>
 
   <body>
+    <a href="#"><img src="images/bus-ribbon.png" alt="StartupBus Ribbon" id="ribbon"></a>
     <div id="header" class="box">
       <img src="images/cloudio-morphing.gif"></img>
       <h2>The sky is your canvas</h2>
@@ -52,16 +65,22 @@
     </div>
 
     <div id="drawings" class="box">
-      <h2>People love it</h2>
+      <h2>People are loving it</h2>
       <p class="tagline">Since we didn't have much time, we launched a very basic version of the app where people could start drawing on the clouds. They love it. Here are some of the best drawings we have recieved</p>
       <div class="center-list mockup">
         <ul>
-          <li><a href="images/spot-1.png" rel="lightbox"><img src="images/spot-1.png"></img></a></li>
-          <li><a href="images/spot-2.png" rel="lightbox"><img src="images/spot-2.png"></img></a></li>
-          <li><a href="images/spot-3.png" rel="lightbox"><img src="images/spot-3.png"></img></a></li>
-          <li><a href="images/spot-4.png" rel="lightbox"><img src="images/spot-4.png"></img></a></li>
-          <li><a href="images/spot-5.png" rel="lightbox"><img src="images/spot-5.png"></img></a></li>
-          <li><a href="images/spot-6.png" rel="lightbox"><img src="images/spot-6.png"></img></a></li>
+          <li><a href="images/spot-1.png" rel="lightbox"><img src="images/spot-1.png"></img></a>
+          <p class="caption">an angry polar bear</p></li>
+          <li><a href="images/spot-2.png" rel="lightbox"><img src="images/spot-2.png"></img></a>
+          <p class="caption">a sexy siren</p></li>
+          <li><a href="images/spot-3.png" rel="lightbox"><img src="images/spot-3.png"></img></a>
+          <p class="caption">a fire breathing chimera</p></li>
+          <li><a href="images/spot-4.png" rel="lightbox"><img src="images/spot-4.png"></img></a>
+          <p class="caption">a NASA shuttle</p></li>
+          <li><a href="images/spot-5.png" rel="lightbox"><img src="images/spot-5.png"></img></a>
+          <p class="caption">a flying elephant</p></li>
+          <li><a href="images/spot-6.png" rel="lightbox"><img src="images/spot-6.png"></img></a>
+          <p class="caption">a little lion</p></li>
         </ul>
         <p class="tagline">Want to make one yourself? </p>
         <a class="button" href="spot">Play with our prototype</a>
@@ -108,7 +127,7 @@
           </li>
           <li>
             <a href="http://lulo.mx">
-              <img src="images/lulo.png"></img>
+              <img src="images/lulo.jpg"></img>
               <h3>Lulo</h3>
             </a>
             <p>The designer</p>
@@ -124,7 +143,48 @@
       <h2>Help us get to the finals.</h2>
       <img class="hero" src="images/cloudio-ribbon.png">
       <p class="tagline">You can help us get to the StartupBus finals. Share this page and spread the love</p>
+    
+
+      <ul id="social" class="cf center-list">
+        <li>
+            <a href="http://twitter.com/share" class="socialite twitter-share" data-text="@Cloudspotting_" data-url="http://cloudspotting.co" data-count="horizontal" rel="nofollow" target="_blank">
+                <span class="vhidden">Share on Twitter</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://plusone.google.com/_/+1/confirm?hl=en&amp;url=http://cloudspotting.co" class="socialite googleplus-one" data-size="medium" data-href="http://cloudspotting.co" rel="nofollow" target="_blank">
+                <span class="vhidden">Share on Google+</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://plusone.google.com/_/+1/confirm?hl=en&amp;url=http://cloudspotting.co" class="socialite hackernews-share" data-size="medium" data-href="http://cloudspotting.co" rel="nofollow" target="_blank">
+                <span class="vhidden"></span>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.facebook.com/sharer.php?u=http://www.cloudspotting.co&amp;t=Cloudspotting" class="socialite facebook-like" data-href="http://cloudspotting.co" data-send="false" data-layout="button_count" data-width="60" data-show-faces="false" rel="nofollow" target="_blank">
+                <span class="vhidden">Share on Facebook</span>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://cloudspotting.co&amp;title=Cloudspotting" class="socialite linkedin-share" data-url="http://cloudspotting.co" data-counter="right" rel="nofollow" target="_blank">
+                <span class="vhidden">Share on LinkedIn</span>
+            </a>
+        </li>
+        <li>
+            <a href="http://pinterest.com/pin/create/button/?url=http://cloudspotting.co/&amp;media=http://cloudspotting.co/images/logo.png&amp;description=Cloudspotting" class="socialite pinterest-pinit" data-count-layout="horizontal">
+                <span class="vhidden">Pin It!</span>
+            </a>
+        </li>
+      </ul>
+
+      <!-- <div class="socialite twitter-share socialite-instance socialite-loaded" data-text="Cloudspotting" data-url="http://cloudspotting.co" data-count="vertical" data-default-href="http://twitter.com/share" data-socialite="0"></div>
+
+      <div class="socialite googleplus-one socialite-instance socialite-loaded" data-size="tall" data-href="http://cloudspotting.co" data-default-href="https://plusone.google.com/_/+1/confirm?hl=en&amp;url=http://cloudspotting.co" data-socialite="1"></div>
+
+      <div class="socialite facebook-like socialite-instance socialite-loaded" data-href="http://cloudspotting.co" data-send="false" data-layout="box_count" data-width="60" data-show-faces="false" data-default-href="http://www.facebook.com/sharer.php?u=http://www.cloudspotting.co&amp;t=Cloudspotting" data-socialite="2"></div> -->
     </div>
+
 
     <div id="coffee" class="box">
       <h2>Buy us a cup of coffee.</h2>

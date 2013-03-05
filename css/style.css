@@ -7,7 +7,8 @@ p {
   font-weight: 300;
   text-align: center;
   margin: 0 auto;
-  line-height: 1.2em;
+  line-height: 1.5em;
+  font-size: 1.4em;
 }
 
 
@@ -65,7 +66,9 @@ body {
 #bus {
   background-color: #8c779a;
 }
-
+#bus tagline {
+  font-size: 1.6em;
+}
 #coffee {
   background-color: #0d5735;
 }
@@ -88,6 +91,9 @@ body {
 
 #drawings {
   background-color: #2f2f2f
+}
+#drawings .caption{
+  font-size: 12pt;
 }
 
 .notop {
@@ -120,7 +126,9 @@ ul {
 }
 
 #team ul li img{
-  border-radius: 100px;
+  -webkit-border-radius: 100px;
+     -moz-border-radius: 100px;
+          border-radius: 100px;
   margin-top: 40px;
   border: 3px solid rgb(255, 255, 255);
   width: 150px;
@@ -187,4 +195,15 @@ ul {
   padding: 40px;
   text-align: center;
   overflow: hidden;
+}
+
+#ribbon {
+  width: 100px;
+  position: fixed;
+  top: 0;
+  right: 2%;
+}
+
+#social {
+
 }
