@@ -429,7 +429,7 @@ window.require.register("cloudspotting", function(exports, require, module) {
               // alert('Image uploaded successfully!\n' + response.data.link);
               var link = document.createElement('a');
               link.target = '_blank';
-              link.href = 'http://twitter.com/share?url=' + encodeURIComponent(response.data.link) + '&via=Cloudspotting_&text=I just found something on a cloud :) ';
+              link.href = 'http://twitter.com/share?&via=Cloudspotting_&text=I just found something on a cloud :) ' + encodeURIComponent(response.data.link) + ' - ';
               link.click();
               sketch.clear();
               $('#name').val('');
@@ -440,8 +440,12 @@ window.require.register("cloudspotting", function(exports, require, module) {
           } else {
             $name.addClass('error');
           }
-
         };
+
+        $('#zap').submit(function(event){
+          sketch.share();
+          event.preventDefault();
+        });
       });
 
       // clouds.on('child_added', drawPixel);
@@ -537,7 +541,7 @@ window.require.register("views/templates/home", function(exports, require, modul
 
 
     buffer += "<header class=\"bar-title\">\n  ";
-    buffer += "\n  <a class=\"button\" href=\"#\" id=\"shuffle\"><i class=\"icon-cloud\"></i></a>\n  <h1 class=\"title\">Cloudspotting</h1>\n  <a class=\"button\" href=\"#\" id=\"camera\">\n    <i class=\"icon-camera\"></i>\n  </a>\n  <a class=\"button disabled\" href=\"#\" id=\"share\">\n    <i class=\"icon-twitter\"></i>\n  </a>\n</header>\n\n<div class=\"content\">\n  <form>\n    <input type=\"text\" placeholder=\"What do you see?\" id=\"name\">\n    <input type=\"file\" id=\"cloud-input\" accept=\"image/gif, image/jpeg, image/png\">\n  </form>\n\n  <div id=\"sketch-container\">\n    <div id=\"canvas-container\">\n      <canvas id=\"background-canvas\"></canvas>\n    </div>\n    <canvas id=\"export-canvas\"></canvas>\n  </div>\n\n  <div class=\"content-padded\">\n      ";
+    buffer += "\n  <a class=\"button\" href=\"#\" id=\"shuffle\"><i class=\"icon-cloud\"></i></a>\n  <h1 class=\"title\">Cloudspotting</h1>\n  <a class=\"button\" href=\"#\" id=\"camera\">\n    <i class=\"icon-camera\"></i>\n  </a>\n  <a class=\"button disabled\" href=\"#\" id=\"share\">\n    <i class=\"icon-twitter\"></i>\n  </a>\n</header>\n\n<div class=\"content\">\n  <form id=\"zap\">\n    <input type=\"text\" placeholder=\"What do you see?\" id=\"name\">\n    <input type=\"file\" id=\"cloud-input\" accept=\"image/gif, image/jpeg, image/png\">\n  </form>\n\n  <div id=\"sketch-container\">\n    <div id=\"canvas-container\">\n      <canvas id=\"background-canvas\"></canvas>\n    </div>\n    <canvas id=\"export-canvas\"></canvas>\n  </div>\n\n  <div class=\"content-padded\">\n      ";
     buffer += "\n\n      <ul class=\"segmented-controller\" id=\"palette\">\n        <li class=\"active color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n      </ul>\n  </div>\n</div>\n";
     return buffer;});
 });
