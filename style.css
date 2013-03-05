@@ -1,0 +1,244 @@
+p {
+	color: white;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 300;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.tagline {
+	width: 600px;
+}
+
+h1 {
+	color: white;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 200;
+	font-size: 5em;
+	margin-top: 0;
+
+}
+
+h2 {
+	color: white;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 200;
+	font-size: 3em;
+	margin-top: 0;
+
+}
+
+h3 {
+	color: white;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
+
+}
+
+
+body {
+	
+	margin: 0;
+	margin-bottom: 0;
+}
+
+#header {
+	padding: 40px;
+	text-align: center;
+	
+	background-color: #8fd1e8;
+	
+
+
+}
+
+#header img {
+	border-radius: 30px;
+}
+
+#team {
+	background-color: #585858;
+	padding: 40px;
+	text-align: center;
+}
+
+#idea {
+	/*background-image: url(http://d.pr/i/hKC7+); */
+	
+	background-color: #76a92e;
+	padding: 40px;
+	text-align: center;
+	overflow: hidden;
+}
+
+#proto {
+
+	background-color: #ffdd17;
+	padding: 40px;
+	text-align: center;
+	overflow: hidden;
+}
+
+#bus {
+
+	background-color: #8c779a;
+	padding: 40px;
+	text-align: center;
+	overflow: hidden;
+}
+
+#coffee {
+
+	background-color: #0d5735;
+	padding: 40px;
+	text-align: center;
+	overflow: hidden;
+}
+
+
+
+#design {
+padding: 40px;
+	text-align: center;
+	overflow: hidden;
+background-color: #858585
+}
+
+#canvas {
+	/* background-image: url(http://d.pr/i/oTUM+); */
+	padding: 40px;
+		background-color: #3dccff;
+		padding: 80px;
+	text-align: center;
+	overflow: hidden;
+}
+
+#universal {
+	/* background-image: url(http://d.pr/i/eWFX+); */
+	padding: 80px;
+	text-align: center;
+	overflow: hidden;
+		background-color: #000000;
+	
+}
+
+#drawings {
+	padding: 40px;
+	text-align: center;
+	overflow: hidden;
+background-color: #2f2f2f
+	
+	
+}
+
+
+.notop {
+		margin-top: 0; 
+
+}
+.nobot{
+		margin-bottom: 0; 
+
+}
+p {
+	color: white;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 300;
+
+}
+
+/*.box {
+	
+	background-color: black;
+	padding: 80px;
+	margin: 20px; 
+	opacity: .8;
+	text-align: center; 
+}*/
+
+.center-list {
+	display: table;
+	margin: 0 auto;
+}
+ul li{
+	list-style: none;
+	float: left;
+	display: inline-block;
+	padding: 30px 30px;
+}
+
+ul {
+overflow: hidden;
+	list-style: none;
+clear: both;
+
+}
+
+
+#team ul li img{
+
+border-radius: 100px;
+margin-bottom: 40px;
+	margin-top: 40px;
+
+}
+
+#design img{
+
+	width: 200px;
+	margin-bottom: 40px;
+	margin-top: 40px;
+	margin: 0 auto;
+	
+}
+
+#drawings img {
+	
+		width: 200px;
+	margin-bottom: 40px;
+	margin-top: 40px;
+	margin: 0 auto;
+}
+
+#drawings ul{
+	width: 900px;
+	margin-bottom: 40px;
+	margin-top: 40px;
+	
+}
+
+#design #mockups ul{
+	
+	width: 900px;
+	margin-bottom: 40px;
+	margin-top: 40px;
+	
+}
+
+
+.button{
+	background-color: #3f8ab1;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
+	padding: 10px;
+	margin-top: : 40px;
+	margin-bottom: 20px;
+	text-decoration: none;
+	color: white;
+	line-height: 50px;
+	-webkit-transition: background-color .5s ease-in;
+	-moz-transition: background-color .5s ease-in;
+	transition: background-color .5s ease-in; 
+}
+
+.button:hover {
+	background-color: #2f627f;
+	
+}
+
+.hero{
+	
+		text-align: center;
+	overflow: hidden;
+	width: 200px;
+}
