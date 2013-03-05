@@ -211,6 +211,17 @@ window.require.register("cloudspotting", function(exports, require, module) {
           }
         };
 
+        var showSpinner = function() {
+          // $('#share').spin({length: 5, radius: 2, width: 5});
+          $('#sketch-container').spin({length: 40, radius: 30, width: 20});
+        };
+
+        var hideSpinner = function() {
+          // $('#share').spin();
+          $('#sketch-container').spin();
+        };
+
+
         sketch.share = function() {
           var w = sketch.canvas.width,
               h = sketch.canvas.height;
@@ -259,12 +270,13 @@ window.require.register("cloudspotting", function(exports, require, module) {
           sketch.background.image.src = src;
           // sketch.$container.backstretch(src);
           console.log('Setting background: '+src);
+          showSpinner();
           // sketch.$container.backstretch(sketch.background.image.src);
         };
 
         $(sketch.background.image).load(function(){
           var bg = sketch.background.image;
-
+          hideSpinner();
           console.log(['IMAGE LOADED',bg.width, bg.height].join(', '));
 
           var aspectRatio, side;
@@ -330,16 +342,6 @@ window.require.register("cloudspotting", function(exports, require, module) {
         //
 
         sketch.start();
-
-        var showSpinner = function() {
-          // $('#share').spin({length: 5, radius: 2, width: 5});
-          $('#sketch-container').spin({length: 40, radius: 30, width: 20});
-        };
-
-        var hideSpinner = function() {
-          // $('#share').spin();
-          $('#sketch-container').spin();
-        };
 
         var upload = document.getElementById('cloud-input');
         if(typeof window.FileReader === 'undefined') {
