@@ -2349,11 +2349,23 @@ select {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+.bar-title {
+  display: -webkit-box;
+  display: box;
+  background-color: #8fd1e8;
+  background-image: none;
+  border-bottom: 1px solid #0e5895;
+}
 #background-container {
   overflow: hidden;
 }
+#canvas-container {
+  position: relative;
+}
 #background-canvas {
   position: absolute;
+  left: 1px;
+  right: 0;
   z-index: -1;
   -webkit-box-sizing: box-sizing;
   -moz-box-sizing: box-sizing;
@@ -2361,6 +2373,7 @@ select {
 }
 #sketch-container {
   width: 100%;
+  text-align: center;
 }
 #sketch-container .sketch {
   cursor: url(../images/cursor.png) 30 30, crosshair;
@@ -2373,6 +2386,9 @@ select {
   -webkit-box-sizing: box-sizing;
   -moz-box-sizing: box-sizing;
   box-sizing: box-sizing;
+}
+canvas {
+  margin: 0 auto;
 }
 i {
   font-size: 19px;
@@ -2407,4 +2423,92 @@ input.error {
 }
 #name {
   margin-bottom: 0;
+}
+#zap {
+  display: none;
+}
+#main {
+  background-color: black;
+}
+#name-alert #name-placeholder {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+#timer-alert {
+  bottom: 40px;
+}
+#timer-alert #timer-placeholder {
+  min-width: 1em;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.alert {
+  position: absolute;
+  left: 50%;
+}
+.alert .centerer {
+  position: relative;
+  left: -50%;
+}
+.alert .placeholder {
+  text-align: center;
+  padding: 10px;
+  background-color: #8fd1e8;
+  color: white;
+}
+#bot-nav {
+  background-color: #8fd1e8;
+}
+#bot-nav #tools {
+  display: table;
+  margin: 0 auto;
+}
+#bot-nav #tools ul {
+  overflow: hidden;
+}
+#bot-nav #tools ul li {
+  position: relative;
+  display: block;
+  float: left;
+}
+#bot-nav #tools ul li i {
+  font-size: 2em;
+}
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width: 320px) {
+  .color i {
+    font-size: 1.5em !important;
+  }
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0px;
+  padding: 0px;
+}
+div#wrapper {
+  width: 100%;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0px 0px -49px 0px;
+}
+div#footer_wrapper {
+  width: 100%;
+  height: 49px;
+}
+div#content_wrapper {
+  width: 100%;
+  padding: 0px 0px 49px 0px;
+}
+div#footer_wrapper,
+div#content_wrapper {
+  min-width: 100%;
+}
+div#footer_inner_wrapper,
+div#content_inner_wrapper {
+  width: 100%;
+  margin: 0px auto;
 }
