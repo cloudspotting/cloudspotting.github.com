@@ -124,7 +124,7 @@ window.require.register("cloudspotting", function(exports, require, module) {
       $(function(){
         var COLORS = ['#000', '#EA1F8D', '#F5E535', '#74C6A3', '#4994D0', '#75CDDC', '#9F8CC2', '#D66BA9', '#ED2248'];
         var IMAGESPATH = 'images/';
-        var CLOUDS = _.range(1,18).map(function(num){return ('cloud-'+num+'.jpg'); });
+        var CLOUDS = _.range(1,16).map(function(num){return ('cloud-'+num+'.jpg'); });
         var DEMOIMG = 'cloud-howto.jpg';
         var radius = 0;
         var container = document.getElementById( 'canvas-container' );
@@ -300,6 +300,7 @@ window.require.register("cloudspotting", function(exports, require, module) {
             // $('#status').text([width,height, aspectRatio].join(','));
 
             sketch.background.ctx.drawImage(bg, offsetX, offsetY, side, side, 0, 0, sketch.canvas.width, sketch.canvas.height);
+            sketch.clear();
 
             // if(autorotate){
             //   sketch.background.ctx.rotate(Math.PI / 2);
@@ -393,7 +394,6 @@ window.require.register("cloudspotting", function(exports, require, module) {
           sketch.background.src = cloud;
           console.log(cloud);
           sketch.setBackground(sketch.background.src);
-          // sketch.clear();
         });
 
         imgur = function(canvas, name, caption) {
