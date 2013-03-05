@@ -118,15 +118,17 @@ window.require.register("cloudspotting", function(exports, require, module) {
         key: '8c78586d699eb1ee78db85b146053996eccf1eff'
       };
       var FILETYPE = 'png';
-      var firebase = new Firebase('https://zm88wl4ubid.firebaseio-demo.com/');
+      var firebase = new Firebase('https://cloudspotting.firebaseio.com/');
 
 
       $(function(){
         var COLORS = [ '#EA1F8D', '#F5E535', '#74C6A3', '#4994D0', '#75CDDC', '#9F8CC2', '#D66BA9', '#ED2248', '#000' ];
+        var IMAGESPATH = 'images/';
+        var CLOUDS = ['cloud-1.png', 'cloud-2.png', 'cloud-3.png', 'cloud-4.png', 'cloud-5.png', 'cloud-6.png', 'cloud-7.png', 'cloud-8.png', 'cloud-9.png', 'cloud-10.png'];
+        var DEMOIMG = 'cloud-howto.jpg';
         var radius = 0;
         var container = document.getElementById( 'canvas-container' );
         var width = $(container).width();
-        console.warn(width);
 
         sketch = Sketch.create({
           container: container,
@@ -144,21 +146,19 @@ window.require.register("cloudspotting", function(exports, require, module) {
 
         sketch.setup = function(){
           sketch.$container = $(sketch.container);
-          console.log( 'setup' );
-
-
+          sketch.setBackground(IMAGESPATH+DEMOIMG);
 
           sketch.background.ctx.canvas.width = sketch.canvas.width;
           sketch.background.ctx.canvas.height = sketch.canvas.height;
           sketch.background.ctx.canvas.style.width = sketch.canvas.width;
           sketch.background.ctx.canvas.style.height = sketch.canvas.height;
-          console.log(sketch.background.ctx.canvas.width,sketch.background.ctx.canvas.height);
+          // console.log(sketch.background.ctx.canvas.width,sketch.background.ctx.canvas.height);
           sketch.exporter.canvas.width = sketch.canvas.width;
           sketch.exporter.canvas.height = sketch.canvas.height;
-          sketch.thickness = 2;
+          sketch.thickness = 4;
           sketch.snapshots = [];
 
-          sketch.setBackground("images/cloud_2.jpg");
+          console.log(IMAGESPATH+DEMOIMG);
 
           sketch.loadPalette();
 
@@ -172,12 +172,14 @@ window.require.register("cloudspotting", function(exports, require, module) {
 
         sketch.update = function(){
 
-          radius = sketch.thickness + Math.abs( Math.sin( sketch.millis * 0.005 ) * 4 );
+          radius = sketch.thickness + Math.abs( Math.sin( sketch.millis * 0.002 ) * 0 );
           // radius = 2;
         };
 
         sketch.loadPalette = function(){
+          // sketch.fillStyle = sketch.strokeStyle = COLORS[Math.floor(Math.random()*COLORS.length)];
           sketch.fillStyle = sketch.strokeStyle = COLORS[0];
+
           $('#palette .color').each(function(index, element){
             $(element).find('a').css('color', COLORS[index]);
             // element.style.color = COLORS[index];
@@ -214,7 +216,7 @@ window.require.register("cloudspotting", function(exports, require, module) {
           }
         };
 
-        sketch.save = function() {
+        sketch.share = function() {
           var w = sketch.canvas.width,
               h = sketch.canvas.height;
 
@@ -225,13 +227,12 @@ window.require.register("cloudspotting", function(exports, require, module) {
           self.imgur(sketch.exporter.canvas, $('name').val());
 
 
-          var datauri = sketch.exporter.canvas.toDataURL();
-
-          var link = document.createElement('a');
-          link.target = '_blank';
-          link.click();
-          link.href = datauri;
-          link.click();
+          // var datauri = sketch.exporter.canvas.toDataURL();
+          // var link = document.createElement('a');
+          // link.target = '_blank';
+          // link.click();
+          // link.href = datauri;
+          // link.click();
         };
 
         sketch.mousedown = function(){
@@ -262,45 +263,51 @@ window.require.register("cloudspotting", function(exports, require, module) {
         sketch.setBackground = function(src){
           sketch.background.image.src = src;
           // sketch.$container.backstretch(src);
-          $(status).text('Setting background');
+          console.log('Setting background');
           $(sketch.background.image).load(function(){
             var bg = sketch.background.image;
 
-            $(status).text(['IMAGE LOADED',bg.width, bg.height].join(', '));
+            console.log(['IMAGE LOADED',bg.width, bg.height].join(', '));
 
             var aspectRatio, side;
 
             var offsetX, offsetY;
-            if(bg.width > 0 && bg.height > 0) {
-              if (bg.width > bg.height) {
+
+            var width = bg.width, height = bg.height;
+
+            // var autorotate = false;
+            // if((session.browser.os === 'iPad' && Math.abs(window.orientation) === 90) || session.browser.os === 'iPhone') {
+            //   autorotate = true;
+            //   width = bg.height;
+            //   height = bg.width;
+            // }
+
+            if(width > 0 && height > 0) {
+              if (width >= height) {
                 // Horizontal
-                aspectRatio = bg.height/sketch.canvas.height;
-                offsetX = (bg.width - sketch.canvas.width*aspectRatio) / 2;
+                aspectRatio = height/sketch.canvas.height;
+                offsetX = (width - sketch.canvas.width*aspectRatio) / 2;
                 offsetY = 0;
-                side = bg.height;
+                side = height;
+                console.log("Horizontal!");
               } else {
                 // Vertical
-                aspectRatio = bg.width/sketch.canvas.width;
+                aspectRatio = width/sketch.canvas.width;
                 offsetX = 0;
-                offsetY = (bg.height - sketch.canvas.height*aspectRatio) / 2;
-                size = bg.width;
+                offsetY = (height - sketch.canvas.height*aspectRatio) / 2;
+                size = width;
+                console.log("Vertical!");
               }
-              $('#status').text([sketch.canvas.width,sketch.canvas.height, aspectRatio].join(','));
-              $('#status').text([offsetY,offsetX].join(','));
 
-              // $('#status').text([bg.width,bg.height, aspectRatio].join(','));
+              // $('#status').text([width,height, aspectRatio].join(','));
 
               sketch.background.ctx.drawImage(bg, offsetX, offsetY, side, side, 0, 0, sketch.canvas.width, sketch.canvas.height);
+
+              // if(autorotate){
+              //   sketch.background.ctx.rotate(Math.PI / 2);
+              // }
             }
           });
-
-          sketch.showSpinner = function() {
-          };
-
-          sketch.hideSpinner = function() {
-          };
-
-
           // sketch.$container.backstretch(sketch.background.image.src);
         };
   // Events
@@ -319,6 +326,9 @@ window.require.register("cloudspotting", function(exports, require, module) {
         sketch.draw = function(){
         };
 
+        sketch.clear = function(){
+          sketch.canvas.getContext('2d').clearRect(0,0,sketch.canvas.width, sketch.canvas.height);
+        }
         // sketch.click = function(){
         //   $('#status').text('click');
         // };
@@ -326,6 +336,15 @@ window.require.register("cloudspotting", function(exports, require, module) {
 
         sketch.start();
 
+        var showSpinner = function() {
+          // $('#share').spin({length: 5, radius: 2, width: 5});
+          $('#sketch-container').spin({length: 40, radius: 30, width: 20});
+        };
+
+        var hideSpinner = function() {
+          // $('#share').spin();
+          $('#sketch-container').spin();
+        };
 
         var upload = document.getElementById('cloud-input');
         if(typeof window.FileReader === 'undefined') {
@@ -355,41 +374,79 @@ window.require.register("cloudspotting", function(exports, require, module) {
           var file = e.dataTransfer.files[0],
               reader = new FileReader();
           reader.onload = function (event) {
+            console.log('Drag n drop-')
             sketch.setBackground(event.target.result);
           };
           reader.readAsDataURL(file);
 
           return false;
         };
-      });
 
-      $('#save').click(function(event){
-        sketch.save();
-      });
-
-      imgur = function(canvas, name, caption) {
-        var base64img = canvas.toDataURL('image/' + FILETYPE).split(',')[1];
-        $.ajax({
-            url: 'https://api.imgur.com/3/upload.json',
-            type: 'POST',
-            headers: {
-              Authorization: 'Client-ID '+ IMGUR.clientID
-            },
-            data: {
-                type: 'base64',
-                key: IMGUR.key,
-                name:  (name || 'cloudspotting') + '.' + FILETYPE,
-                title: (name || 'cloudspotting') + '.' + FILETYPE,
-                caption: caption || 'Created with Cloudspotting - @Cloudspotting_',
-                image: base64img
-            },
-            dataType: 'json'
-        }).success(function(response) {
-          console.log(response);
-        }).error(function() {
-            alert('Could not reach api.imgur.com. Sorry :(');
+        $('#camera').click(function(event){
+          $('#cloud-input').click();
         });
-      };
+
+        $('#share').click(function(event){
+          sketch.share();
+        });
+
+        $('#shuffle').click(function(event){
+          sketch.setBackground(IMAGESPATH+CLOUDS[Math.floor(Math.random()*CLOUDS.length)]);
+          sketch.clear();
+        });
+
+        imgur = function(canvas, name, caption) {
+          var base64img = canvas.toDataURL('image/' + FILETYPE).split(',')[1];
+          var $name = $('#name');
+          var name = $name.val();
+          if(name){
+            $name.removeClass('error');
+            showSpinner();
+            $.ajax({
+                url: 'https://api.imgur.com/3/upload.json',
+                type: 'POST',
+                headers: {
+                  Authorization: 'Client-ID '+ IMGUR.clientID
+                },
+                data: {
+                    type: 'base64',
+                    key: IMGUR.key,
+                    name:  (name || 'cloudspotting') + '.' + FILETYPE,
+                    title: (name || 'cloudspotting') + '.' + FILETYPE,
+                    caption: caption || 'Created with Cloudspotting - @Cloudspotting_',
+                    image: base64img
+                },
+                dataType: 'json'
+            }).success(function(response) {
+              var id = response.data.id;
+              firebase.child('clouds').child((new Date()).toString('dd-MM-yy-hh:mm')).set({
+                  image: response.data.link,
+                  background: sketch.background.ctx.canvas.toDataURL(),
+                  name: name || 'cloud'
+              });
+              hideSpinner();
+              // redirect.
+              // alert('Image uploaded successfully!\n' + response.data.link);
+              var link = document.createElement('a');
+              link.target = '_blank';
+              link.href = 'http://twitter.com/share?url=' + encodeURIComponent(response.data.link) + '&via=Cloudspotting_&text=I just found something on a cloud :) ';
+              link.click();
+              sketch.clear();
+              $('#name').val('');
+              console.log(response);
+            }).error(function() {
+                alert('Could not reach api.imgur.com. Sorry :(');
+            });
+          } else {
+            $name.addClass('error');
+          }
+
+        };
+      });
+
+      // clouds.on('child_added', drawPixel);
+      // clouds.on('child_changed', drawPixel);
+      // clouds.on('child_removed', clearPixel);
     
     }
   };
@@ -422,7 +479,7 @@ window.require.register("lib/router", function(exports, require, module) {
       },
 
       feed: function() {
-        $('body').html(application.feedView.render().el)
+          $('body').html(application.feedView.render().el)
       }
   })
   
@@ -476,10 +533,13 @@ window.require.register("views/templates/feed", function(exports, require, modul
 window.require.register("views/templates/home", function(exports, require, module) {
   module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
     helpers = helpers || Handlebars.helpers;
-    
+    var buffer = "";
 
 
-    return "<header class=\"bar-title\">\n  <a class=\"button\" href=\"#\">\n    &#10005;\n  </a>\n  <h1 class=\"title\">Cloudspotting</h1>\n  <a class=\"button\" href=\"#\" id=\"save\">\n    <i class=\"icon-cloud-upload\"></i>\n  </a>\n</header>\n\n\n<div class=\"content\">\n  <div id=\"sketch-container\">\n    <div id=\"canvas-container\">\n      <canvas id=\"background-canvas\"></canvas>\n    </div>\n    <canvas id=\"export-canvas\"></canvas>\n  </div>\n\n  <div class=\"content-padded\">\n      <span id=\"status\">Status</span>\n      <ul class=\"segmented-controller\" id=\"palette\">\n        <li class=\"active color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n      </ul>\n    <form>\n      <input type=\"text\" placeholder=\"Name\" id=\"name\">\n      <input type=\"file\" id=\"cloud-input\" accept=\"image/gif, image/jpeg, image/png\">\n\n    </form>\n  </div>\n\n  <ul class=\"list inset\">\n    <li>\n      <a href=\"\">\n        <strong>List item lol</strong>\n        <span class=\"chevron\"></span>\n      </a>\n    </li>\n  </ul>\n\n</div>\n";});
+    buffer += "<header class=\"bar-title\">\n  ";
+    buffer += "\n  <a class=\"button\" href=\"#\" id=\"shuffle\"><i class=\"icon-cloud\"></i></a>\n  <h1 class=\"title\">Cloudspotting</h1>\n  <a class=\"button\" href=\"#\" id=\"camera\">\n    <i class=\"icon-camera\"></i>\n  </a>\n  <a class=\"button disabled\" href=\"#\" id=\"share\">\n    <i class=\"icon-twitter\"></i>\n  </a>\n</header>\n\n<div class=\"content\">\n  <form>\n    <input type=\"text\" placeholder=\"What do you see?\" id=\"name\">\n    <input type=\"file\" id=\"cloud-input\" accept=\"image/gif, image/jpeg, image/png\">\n  </form>\n\n  <div id=\"sketch-container\">\n    <div id=\"canvas-container\">\n      <canvas id=\"background-canvas\"></canvas>\n    </div>\n    <canvas id=\"export-canvas\"></canvas>\n  </div>\n\n  <div class=\"content-padded\">\n      ";
+    buffer += "\n\n      <ul class=\"segmented-controller\" id=\"palette\">\n        <li class=\"active color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n      </ul>\n  </div>\n</div>\n";
+    return buffer;});
 });
 window.require.register("views/view", function(exports, require, module) {
   require('lib/view_helper')

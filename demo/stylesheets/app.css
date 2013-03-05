@@ -2355,7 +2355,6 @@ select {
 #background-canvas {
   position: absolute;
   z-index: -1;
-  border: 1px solid red;
   -webkit-box-sizing: box-sizing;
   -moz-box-sizing: box-sizing;
   box-sizing: box-sizing;
@@ -2371,13 +2370,12 @@ select {
   -o-user-select: none;
   user-select: none;
   z-index: 2;
-  border: 1px solid green;
   -webkit-box-sizing: box-sizing;
   -moz-box-sizing: box-sizing;
   box-sizing: box-sizing;
 }
-#palette i {
-  font-size: 1em;
+i {
+  font-size: 19px;
 }
 .active a {
   text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;
@@ -2387,4 +2385,26 @@ select {
 }
 .segmented-controller li > a {
   padding: 8px 10px;
+}
+#camera {
+  position: absolute;
+  top: 5px;
+  right: 56px;
+}
+#cloud-input {
+  position: absolute;
+  width: 0;
+}
+input.error {
+  background-color: #b94a48;
+  border-color: #b94a48;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.twitter-share-button {
+  position: absolute;
+}
+#name {
+  margin-bottom: 0;
 }
