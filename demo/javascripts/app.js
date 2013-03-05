@@ -122,13 +122,26 @@ window.require.register("cloudspotting", function(exports, require, module) {
 
 
       $(function(){
+        document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });
+
+
         var COLORS = ['#000', '#EA1F8D', '#F5E535', '#74C6A3', '#4994D0', '#75CDDC', '#9F8CC2', '#D66BA9', '#ED2248'];
         var IMAGESPATH = 'images/';
+
+        // Sacar las fotos de firebase
         var CLOUDS = _.range(1,16).map(function(num){return ('cloud-'+num+'.jpg'); });
         var DEMOIMG = 'cloud-howto.jpg';
         var radius = 0;
         var container = document.getElementById( 'canvas-container' );
-        var width = $(container).width();
+
+
+        var width = window.innerHeight - $('#top-nav').outerHeight() - $('#bot-nav').outerHeight() - 7;
+
+        if(width > window.innerWidth){
+          width = window.innerWidth;
+        }
+
+        // var width = $(container).width();
 
         sketch = Sketch.create({
           container: container,
@@ -424,7 +437,7 @@ window.require.register("cloudspotting", function(exports, require, module) {
               var id = response.data.id;
               firebase.child('clouds').child((new Date()).toString('dd-MM-yy-hh:mm')).set({
                   image: response.data.link,
-                  background: sketch.background.ctx.canvas.toDataURL(),
+                  // background: sketch.background.ctx.canvas.toDataURL(),
                   name: cloudname || 'cloud'
               });
               hideSpinner();
@@ -543,9 +556,11 @@ window.require.register("views/templates/home", function(exports, require, modul
     var buffer = "";
 
 
-    buffer += "<header class=\"bar-title\">\n  ";
-    buffer += "\n  <a class=\"button\" href=\"#\" id=\"shuffle\"><i class=\"icon-cloud\"></i></a>\n  <h1 class=\"title\">Cloudspotting</h1>\n  <a class=\"button\" href=\"#\" id=\"camera\">\n    <i class=\"icon-camera\"></i>\n  </a>\n  <a class=\"button disabled\" href=\"#\" id=\"share\">\n    <i class=\"icon-twitter\"></i>\n  </a>\n</header>\n\n<div class=\"content\">\n  <form id=\"zap\">\n    <input type=\"text\" placeholder=\"What do you see?\" id=\"name\">\n    <input type=\"file\" id=\"cloud-input\" accept=\"image/gif, image/jpeg, image/png\">\n  </form>\n\n  <div id=\"sketch-container\">\n    <div id=\"canvas-container\">\n      <canvas id=\"background-canvas\"></canvas>\n    </div>\n    <canvas id=\"export-canvas\"></canvas>\n  </div>\n\n  <div class=\"content-padded\">\n      ";
-    buffer += "\n\n      <ul class=\"segmented-controller\" id=\"palette\">\n        <li class=\"active color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n      </ul>\n  </div>\n</div>\n";
+    buffer += "<header class=\"bar-title\" id=\"top-nav\">\n  ";
+    buffer += "\n  <a class=\"button\" href=\"#\" id=\"shuffle\"><i class=\"icon-cloud\"></i></a>\n  <h1 class=\"title\"><span id=\"log\">Cloudspotting</span></h1>\n  ";
+    buffer += "\n  ";
+    buffer += "\n\n  <div id=\"name-alert\" class=\"alert\">\n    <div class=\"centerer\">\n      <p id=\"name-placeholder\" class=\"placeholder\">NAME</p>\n    </div>\n  </div>\n</header>\n\n<div class=\"content\" id=\"main\">\n\n  <form id=\"zap\">\n    <input type=\"text\" placeholder=\"What do you see?\" id=\"name\">\n    <input type=\"file\" id=\"cloud-input\" accept=\"image/gif, image/jpeg, image/png\">\n  </form>\n\n<div id=\"wrapper\"> \n<div id=\"content_wrapper\"> \n<div id=\"content_inner_wrapper\"> \n  <div id=\"sketch-container\">\n    <div id=\"canvas-container\">\n      <canvas id=\"background-canvas\"></canvas>\n    </div>\n    <canvas id=\"export-canvas\"></canvas>\n  </div>\n</div>\n</div>\n</div>\n\n<div id=\"footer_wrapper\">\n<div id=\"footer_inner_wrapper\">\n  <div class=\"content-padded\" id=\"bot-nav\">\n    <div id=\"timer-alert\" class=\"alert\">\n      <div class=\"centerer\">\n        <p id=\"timer-placeholder\" class=\"placeholder\">5</p>\n      </div>\n    </div>\n      ";
+    buffer += "\n    <div id=\"tools\">\n        <ul id=\"palette\">\n          <li class=\"active color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n          <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n          <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n          <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n          <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n          <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n          <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n          <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n          <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        </ul>\n    </div>\n  </div>\n</div>\n</div>\n</div>\n\n\n\n\n\n\n\n\n\n";
     return buffer;});
 });
 window.require.register("views/view", function(exports, require, module) {
