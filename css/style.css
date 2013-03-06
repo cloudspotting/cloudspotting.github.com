@@ -111,6 +111,7 @@ body {
   margin: 0 auto;
 }
 
+
 ul li{
   list-style: none;
   float: left;
@@ -210,4 +211,9 @@ ul {
 
 .logo {
   width: 100px;
+}
+
+.feed {
+  background-color: rgb(200, 0, 0);
+  
 }
