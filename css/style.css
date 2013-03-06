@@ -205,6 +205,15 @@ ul {
   width: 200px;
 }
 
+.logos{
+  
+    text-align: center;
+  overflow: hidden;
+  width: 300px;
+  margin-top: 30px;
+  
+}
+
 .box {
   padding: 40px;
   text-align: center;
