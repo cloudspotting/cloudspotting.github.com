@@ -449,7 +449,7 @@ window.require.register("cloudspotting", function(exports, require, module) {
               // alert('Image uploaded successfully!\n' + response.data.link);
               var link = document.createElement('a');
               link.target = '_blank';
-              link.href = 'http://twitter.com/share?&via=Cloudspotting_&text=I just found something on a cloud :) ' + encodeURIComponent(response.data.link) + ' - evaporating at @StartupBusMX';
+              link.href = 'http://twitter.com/share?&via=Cloudspotting_&text=I just found something on a cloud :) ' + encodeURIComponent(response.data.link);
               link.click();
               sketch.clear();
               $('#name').val('');
