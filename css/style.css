@@ -24,6 +24,13 @@ h1 {
   margin-top: 0;
 }
 
+h6 {
+  color: white;
+  font-weight: 200;
+  font-size: .5em;
+  margin-top: 0;
+}
+
 h2 {
   color: white;
   font-weight: 200;
@@ -165,7 +172,7 @@ ul {
 
 
 .button{
-  background-color: #3f8ab1;
+  background-color: rgb(200, 0, 0);
   font-weight: 400;
   padding: 10px;
   margin-top: 40px;
@@ -184,6 +191,12 @@ ul {
   background-color: #2f627f;
   
 }
+
+.feed:hover {
+  background-color: #7d2020;
+  
+}
+
 
 .hero{
   
@@ -214,6 +227,7 @@ ul {
 }
 
 .feed {
-  background-color: rgb(200, 0, 0);
+    background-color: #3f8ab1;
+
   
 }
