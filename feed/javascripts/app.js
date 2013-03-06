@@ -125,7 +125,7 @@ window.require.register("cloudfeed", function(exports, require, module) {
           // Dict to array
           spots = _.map(snapshot.val(),function(sp){
             return sp;
-          }).reverse().splice(0,60);
+          }).splice(0,60);
 
           loadImage()
         });
