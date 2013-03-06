@@ -24,7 +24,7 @@ h1 {
   margin-top: 0;
 }
 
-h6 {
+h4 {
   color: white;
   font-weight: 200;
   font-size: 2em;
@@ -188,12 +188,12 @@ ul {
 }
 
 .button:hover {
-  background-color: #2f627f;
+  background-color: #7d2020;
   
 }
 
 .feed:hover {
-  background-color: #7d2020;
+  background-color: #2f627f;
   
 }
 
