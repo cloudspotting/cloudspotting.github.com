@@ -129,7 +129,7 @@ window.require.register("cloudfeed", function(exports, require, module) {
 
           loadImage()
         });
-        var i = 0;
+        var i = -1;
         
         var loadImage = function(){
           i++;
