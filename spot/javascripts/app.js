@@ -439,7 +439,7 @@ window.require.register("cloudspotting", function(exports, require, module) {
                 dataType: 'json'
             }).success(function(response) {
               var id = response.data.id;
-              firebase.child('clouds').child((new Date()).toString('dd-MM-yy-hh:mm')).set({
+              firebase.child('clouds').child((new Date()).toString('2-dd-MM-yy-hh:mm')).set({
                   image: response.data.link,
                   // background: sketch.background.ctx.canvas.toDataURL(),
                   name: cloudname || 'cloud'

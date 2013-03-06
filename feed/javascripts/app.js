@@ -155,6 +155,10 @@ window.require.register("cloudfeed", function(exports, require, module) {
         var stopSpinner = function(){
           $('#top-nav').stopSpin();
         }
+
+        $('#spotbtn').click(function(event){
+          window.location = '/spot';
+        });
       });
     }
   }
@@ -688,7 +692,7 @@ window.require.register("views/templates/feed", function(exports, require, modul
     
 
 
-    return "<header class=\"bar-title\" id=\"top-nav\">\n  <a class=\"button\" href=\"/spot\" id=\"shuffle\"><i class=\"icon-cloud\"></i></a>\n  <h1 class=\"title\">Cloudspots</h1>\n</header>\n<div class=\"content\" id=\"feed\">\n</div>\n";});
+    return "<header class=\"bar-title\" id=\"top-nav\">\n  <a class=\"button\" href=\"/spot\" id=\"spotbtn\"><i class=\"icon-cloud\"></i>Start Cloudspotting</a>\n  <h1 class=\"title\">Cloudspots</h1>\n</header>\n<div class=\"content\" id=\"feed\">\n</div>\n";});
 });
 window.require.register("views/templates/home", function(exports, require, module) {
   module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
