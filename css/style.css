@@ -24,6 +24,13 @@ h1 {
   margin-top: 0;
 }
 
+h4 {
+  color: white;
+  font-weight: 200;
+  font-size: 2em;
+  margin-top: 0;
+}
+
 h2 {
   color: white;
   font-weight: 200;
@@ -60,7 +67,7 @@ body {
 }
 
 #proto {
-  background-color: #ffdd17;
+  background-color: #6e6e6e;
 }
 
 #bus {
@@ -165,7 +172,7 @@ ul {
 
 
 .button{
-  background-color: #3f8ab1;
+  background-color: rgb(200, 0, 0);
   font-weight: 400;
   padding: 10px;
   margin-top: 40px;
@@ -181,15 +188,30 @@ ul {
 }
 
 .button:hover {
+  background-color: #7d2020;
+  
+}
+
+.feed:hover {
   background-color: #2f627f;
   
 }
+
 
 .hero{
   
     text-align: center;
   overflow: hidden;
   width: 200px;
+}
+
+.logos{
+  
+    text-align: center;
+  overflow: hidden;
+  width: 300px;
+  margin-top: 30px;
+  
 }
 
 .box {
@@ -214,6 +236,7 @@ ul {
 }
 
 .feed {
-  background-color: rgb(200, 0, 0);
+    background-color: #3f8ab1;
+
   
 }
