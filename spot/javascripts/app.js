@@ -450,7 +450,7 @@ window.require.register("cloudspotting", function(exports, require, module) {
               var link = document.createElement('a');
               link.target = '_blank';
               link.href = 'http://twitter.com/share?&via=Cloudspotting_&text=I just found something on a cloud :) ' + encodeURIComponent(response.data.link);
-              link.click();
+              // link.click();
               sketch.clear();
               $('#name').val('');
               console.log(response);
