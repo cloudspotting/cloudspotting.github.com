@@ -125,8 +125,8 @@ window.require.register("cloudfeed", function(exports, require, module) {
           // Dict to array
           spots = _.map(snapshot.val(),function(sp){
             return sp;
-          }).splice(0,60);
-
+          })
+          spots = fisherYates(spots).splice(0,60);
           loadImage()
         });
         var i = -1;
@@ -141,6 +141,18 @@ window.require.register("cloudfeed", function(exports, require, module) {
             showSpinner();
           }
         };
+
+        function fisherYates ( myArray ) {
+          var i = myArray.length, j, tempi, tempj;
+          if ( i == 0 ) return false;
+          while ( --i ) {
+             j = Math.floor( Math.random() * ( i + 1 ) );
+             tempi = myArray[i];
+             tempj = myArray[j];
+             myArray[i] = tempj;
+             myArray[j] = tempi;
+           }
+        }
 
         var imageLoaded = function(event){
           stopSpinner();
