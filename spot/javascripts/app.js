@@ -448,9 +448,9 @@ window.require.register("cloudspotting", function(exports, require, module) {
               // redirect.
               // alert('Image uploaded successfully!\n' + response.data.link);
               var link = document.createElement('a');
-              link.target = '_blank';
-              link.href = 'http://twitter.com/share?&via=Cloudspotting_&text=I just found something on a cloud :) ' + encodeURIComponent(response.data.link);
-              // link.click();
+              // link.target = '_blank';
+              link.href = '/feed'; http://twitter.com/share?&via=Cloudspotting_&text=I just found something on a cloud :) ' + encodeURIComponent(response.data.link);
+              link.click();
               sketch.clear();
               $('#name').val('');
               console.log(response);
@@ -565,9 +565,9 @@ window.require.register("views/templates/home", function(exports, require, modul
 
 
     buffer += "<header class=\"bar-title\" id=\"top-nav\">\n  ";
-    buffer += "\n  <a class=\"button\" href=\"#\" id=\"shuffle\"><i class=\"icon-cloud\"></i> Random Cloud</a><a class=\"button\" href=\"/feed\" id=\"feedbtn\">Live feed</a>\n  <h1 class=\"title\"><span id=\"log\">Cloudspotting</span></h1>\n  ";
+    buffer += "\n  <a class=\"button\" href=\"#\" id=\"shuffle\"><i class=\"icon-cloud\"></i> Random Cloud</a>\n  <h1 class=\"title\"><span id=\"log\">Cloudspotting</span></h1>\n  ";
     buffer += "\n  ";
-    buffer += "\n\n  <a class=\"button\" href=\"#\" id=\"share\">Save and share!</a>\n</header>\n\n<div class=\"content\" id=\"main\">\n\n  <form id=\"zap\">\n    <input type=\"text\" placeholder=\"What do you see?\" id=\"name\">\n    <input type=\"file\" id=\"cloud-input\" accept=\"image/gif, image/jpeg, image/png\">\n  </form>\n\n<div id=\"wrapper\"> \n<div id=\"content_wrapper\"> \n<div id=\"content_inner_wrapper\"> \n  <div id=\"sketch-container\">\n    <div id=\"canvas-container\">\n      <canvas id=\"background-canvas\"></canvas>\n    </div>\n    <canvas id=\"export-canvas\"></canvas>\n  </div>\n</div>\n</div>\n</div>\n\n<div id=\"footer_wrapper\">\n<div id=\"footer_inner_wrapper\">\n  <div class=\"content-padded\" id=\"bot-nav\">\n    <div id=\"timer-alert\" class=\"alert\">\n      <div class=\"centerer\">\n        <p id=\"timer-placeholder\" class=\"placeholder\">5</p>\n      </div>\n    </div>\n      ";
+    buffer += "\n\n  <a class=\"button\" href=\"#\" id=\"share\">Post it on the wall!</a>\n</header>\n\n<div class=\"content\" id=\"main\">\n\n  <form id=\"zap\">\n    <input type=\"text\" placeholder=\"What do you see?\" id=\"name\">\n    <input type=\"file\" id=\"cloud-input\" accept=\"image/gif, image/jpeg, image/png\">\n  </form>\n\n<div id=\"wrapper\"> \n<div id=\"content_wrapper\"> \n<div id=\"content_inner_wrapper\"> \n  <div id=\"sketch-container\">\n    <div id=\"canvas-container\">\n      <canvas id=\"background-canvas\"></canvas>\n    </div>\n    <canvas id=\"export-canvas\"></canvas>\n  </div>\n</div>\n</div>\n</div>\n\n<div id=\"footer_wrapper\">\n<div id=\"footer_inner_wrapper\">\n  <div class=\"content-padded\" id=\"bot-nav\">\n    <div id=\"timer-alert\" class=\"alert\">\n      <div class=\"centerer\">\n        <p id=\"timer-placeholder\" class=\"placeholder\">5</p>\n      </div>\n    </div>\n      ";
     buffer += "\n    <div id=\"tools\">\n        <ul id=\"palette\">\n          <li class=\"active color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n          <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n          <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n          <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n          <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n          <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n          <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n          <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n          <li class=\"color\"><a href=\"#\"><i class=\"icon-tint\"></i></a></li>\n        </ul>\n    </div>\n  </div>\n</div>\n</div>\n</div>\n\n\n\n\n\n\n\n\n\n";
     return buffer;});
 });
