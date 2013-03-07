@@ -123,41 +123,45 @@ window.require.register("cloudfeed", function(exports, require, module) {
 
         spotsRef.on('value', function(snapshot){
           // Dict to array
-          spots = _.map(snapshot.val(),function(sp){
-            return sp;
-          })
-          spots = fisherYates(spots).splice(0,60);
-          loadImage()
+          // spots = _.map(snapshot.val(),function(sp){
+          //   return sp;
+          // })
+          spots = [];
+          snapshot.forEach(function(snap){
+            spots.push(snap.val());
+          });
+          spots = spots.reverse();
+          for (var i=0; i < 20; i++) {
+              loadImage();
+          }
+          // spots = spots.splice(0,60);
         });
-        var i = -1;
-        
+
+        // load test data initially
+
         var loadImage = function(){
-          i++;
-          if(i < spots.length){
+          if(spots.length > 0){
+            var spot = spots.pop();
             var img = new Image();
             $(img).load(imageLoaded);
-            img.src = spots[i].image;
+            img.src = spot.image;
             img.className = 'spot';
             showSpinner();
           }
         };
 
-        function fisherYates ( myArray ) {
-          var i = myArray.length, j, tempi, tempj;
-          if ( i == 0 ) return false;
-          while ( --i ) {
-             j = Math.floor( Math.random() * ( i + 1 ) );
-             tempi = myArray[i];
-             tempj = myArray[j];
-             myArray[i] = tempj;
-             myArray[j] = tempi;
+        $(window).scroll(function () {
+           if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
+              for (var i=0; i < 3; i++) {
+                  loadImage();
+              }
            }
-        }
+        });
+
 
         var imageLoaded = function(event){
           stopSpinner();
           $('#feed').append(event.target);
-          loadImage();
         };
         
         var showSpinner = function(){
@@ -166,14 +170,14 @@ window.require.register("cloudfeed", function(exports, require, module) {
 
         var stopSpinner = function(){
           $('#top-nav').stopSpin();
-        }
+        };
 
         $('#spotbtn').click(function(event){
           window.location = '/spot';
         });
       });
     }
-  }
+  };
 
   module.exports = cloudfeed;
   
@@ -704,7 +708,7 @@ window.require.register("views/templates/feed", function(exports, require, modul
     
 
 
-    return "<header class=\"bar-title\" id=\"top-nav\">\n  <a class=\"button\" href=\"/spot\" id=\"spotbtn\"><i class=\"icon-cloud\"></i>Start Cloudspotting</a>\n  <h1 class=\"title\">Cloudspots</h1>\n</header>\n<div class=\"content\" id=\"feed\">\n</div>\n";});
+    return "<header class=\"bar-title\" id=\"top-nav\">\n  <a class=\"button\" href=\"/spot\" id=\"spotbtn\"><i class=\"icon-cloud\"></i>Start Cloudspotting</a>\n  <h1 class=\"title\">Cloudspots</h1>\n</header>\n<div class=\"content\" id=\"feed\">\n\n</div>\n<footer id=\"cloudy\"></footer>\n";});
 });
 window.require.register("views/templates/home", function(exports, require, module) {
   module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
