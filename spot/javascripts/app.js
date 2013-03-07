@@ -447,7 +447,7 @@ window.require.register("cloudspotting", function(exports, require, module) {
               hideSpinner();
               // redirect.
               // alert('Image uploaded successfully!\n' + response.data.link);
-              confirm('Your cloudspot is here: ' + response.data.link);
+              confirm('Share this Cloudspot, copy and paste this url:\n ' + response.data.link);
               var link = document.createElement('a');
               // link.target = '_blank';
               link.href = '/feed'; http://twitter.com/share?&via=Cloudspotting_&text=I just found something on a cloud :) ' + encodeURIComponent(response.data.link);
