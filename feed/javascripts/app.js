@@ -130,7 +130,7 @@ window.require.register("cloudfeed", function(exports, require, module) {
           snapshot.forEach(function(snap){
             spots.push(snap.val());
           });
-          spots = spots.reverse();
+          // spots = spots.reverse();
           for (var i=0; i < 20; i++) {
               loadImage();
           }
